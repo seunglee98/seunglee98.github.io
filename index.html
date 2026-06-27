@@ -655,27 +655,201 @@
       transform: none;
     }
 
-    /* ─── RESPONSIVE ──────────────────────────────────────────── */
+    /* ─── RESPONSIVE — TABLET ────────────────────────────────── */
     @media (max-width: 1100px) {
       .about-grid { grid-template-columns: 1fr; }
-      .profile-card { max-width: 320px; }
+      .profile-card { max-width: 360px; }
       .activities-grid { grid-template-columns: 1fr; }
     }
-    @media (max-width: 768px) {
-      .site-nav {
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-      }
-      .site-nav.open { transform: translateX(0); }
-      .main-content { margin-left: 0; }
-      .nav-toggle { display: flex; }
-      .hero-inner, .section, .disclaimer { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .hero-inner { padding-top: 5rem; }
-      .site-footer { padding: 1.25rem 1.5rem; flex-direction: column; text-align: center; }
-      .pres-item { grid-template-columns: 1fr; gap: 0.3rem; }
-      .pres-date { font-size: 0.65rem; }
-    }
 
+    /* ─── RESPONSIVE — MOBILE ────────────────────────────────── */
+    @media (max-width: 768px) {
+
+      /* ── Sidebar: hide entirely, replaced by bottom tab bar ── */
+      .site-nav { display: none; }
+      .nav-toggle { display: none; }          /* no hamburger either */
+      .main-content { margin-left: 0; padding-bottom: 64px; }
+
+      /* ── Bottom Tab Bar ───────────────────────────────────── */
+      .mobile-tabbar {
+        display: flex;
+      }
+
+      /* ── Hero ─────────────────────────────────────────────── */
+      .hero {
+        min-height: 100svh;
+        align-items: flex-end;
+      }
+      .hero-inner {
+        padding: 2rem 1.25rem 2.5rem;
+        width: 100%;
+        max-width: 100%;
+      }
+      .hero-eyebrow {
+        font-size: 0.65rem;
+        margin-bottom: 1rem;
+      }
+      .hero-name {
+        font-size: clamp(2rem, 9vw, 2.8rem);
+        margin-bottom: 0.85rem;
+      }
+      .hero-title {
+        font-size: 0.88rem;
+        line-height: 1.7;
+      }
+      .hero-divider { margin: 1.25rem 0; }
+      .hero-quote { font-size: 0.9rem; }
+      .hero-links {
+        gap: 0.6rem;
+        margin-top: 1.75rem;
+      }
+      .hero-link {
+        flex: 1 1 calc(50% - 0.3rem);
+        justify-content: center;
+        padding: 0.65rem 0.75rem;
+        font-size: 0.75rem;
+        min-height: 44px;          /* touch target */
+      }
+
+      /* ── Section shell ────────────────────────────────────── */
+      .section {
+        padding: 2.5rem 1.25rem;
+        max-width: 100%;
+      }
+      .section-heading { font-size: 1.6rem; margin-bottom: 1.5rem; }
+
+      /* ── About ────────────────────────────────────────────── */
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      /* Show profile card above text on mobile */
+      .about-grid { display: flex; flex-direction: column; }
+      .profile-card {
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: 88px 1fr;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .profile-card-img {
+        aspect-ratio: auto;
+        height: 100%;
+        min-height: 88px;
+        border-radius: 0;
+      }
+      .profile-card-body { padding: 0.9rem 1rem; }
+      .profile-card-name { font-size: 0.92rem; }
+      .profile-card-role { font-size: 0.68rem; margin-bottom: 0.65rem; }
+      .profile-contact a { font-size: 0.7rem; min-height: 32px; }
+      .about-text p { font-size: 0.88rem; line-height: 1.8; }
+      .edu-degree { font-size: 0.78rem; }
+      .edu-school  { font-size: 0.7rem; }
+
+      /* ── Research tags ────────────────────────────────────── */
+      .tags-grid { gap: 0.5rem; }
+      .tag {
+        font-size: 0.74rem;
+        padding: 0.38rem 0.8rem;
+        min-height: 36px;
+      }
+
+      /* ── Timeline ─────────────────────────────────────────── */
+      .timeline { padding-left: 1.25rem; }
+      .timeline-item { padding-left: 1.1rem; margin-bottom: 1.4rem; }
+      .timeline-item::before { left: -1.45rem; width: 7px; height: 7px; }
+      .timeline-role { font-size: 0.88rem; }
+      .timeline-org  { font-size: 0.76rem; }
+
+      /* ── Publications ─────────────────────────────────────── */
+      .pub-filters {
+        gap: 0.4rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        padding-bottom: 0.5rem;
+        /* hide scrollbar visually */
+        scrollbar-width: none;
+      }
+      .pub-filters::-webkit-scrollbar { display: none; }
+      .filter-btn {
+        white-space: nowrap;
+        flex-shrink: 0;
+        min-height: 36px;
+        padding: 0.3rem 0.85rem;
+        font-size: 0.72rem;
+      }
+      .pub-item { padding: 1.1rem 0; }
+      .pub-title { font-size: 0.87rem; }
+      .pub-authors, .pub-journal { font-size: 0.74rem; }
+      .pub-venue-badge { font-size: 0.6rem; }
+
+      /* ── Presentations ────────────────────────────────────── */
+      .pres-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+        padding: 0.85rem 1rem;
+      }
+      .pres-date {
+        font-size: 0.63rem;
+        color: var(--gold);
+      }
+      .pres-title  { font-size: 0.82rem; }
+      .pres-venue  { font-size: 0.7rem; }
+      /* disable the slide-right hover on touch */
+      .pres-item:hover { transform: none; }
+
+      /* ── Activities ───────────────────────────────────────── */
+      .activities-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .activity-group li { font-size: 0.78rem; }
+
+      /* ── Disclaimer / Footer ──────────────────────────────── */
+      .disclaimer {
+        padding: 1.5rem 1.25rem;
+        max-width: 100%;
+        font-size: 0.68rem;
+      }
+      .site-footer {
+        padding: 1.1rem 1.25rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 0.4rem;
+        font-size: 0.68rem;
+      }
+    } /* end @media 768px */
+
+    /* ── Bottom Tab Bar (mobile only) ─────────────────────────── */
+    .mobile-tabbar {
+      display: none;               /* hidden on desktop */
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 64px;
+      background: var(--navy);
+      border-top: 1px solid rgba(201,168,76,0.2);
+      z-index: 300;
+      align-items: stretch;
+    }
+    .tab-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      color: var(--slate);
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 6px 2px;
+      transition: color 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .tab-item svg { width: 18px; height: 18px; }
+    .tab-item:hover, .tab-item.active { color: var(--gold); }
+
+    /* ── Nav overlay backdrop ──────────────────────────────────── */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
     }
@@ -683,12 +857,29 @@
 </head>
 <body>
 
-<!-- ── MOBILE TOGGLE ───────────────────────────── -->
-<button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.site-nav').classList.toggle('open')">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-  </svg>
-</button>
+<!-- ── BOTTOM TAB BAR (mobile only) ────────────── -->
+<nav class="mobile-tabbar" id="mobile-tabbar" aria-label="Mobile navigation">
+  <a class="tab-item active" href="#home" data-section="home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Home
+  </a>
+  <a class="tab-item" href="#about" data-section="about">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+    About
+  </a>
+  <a class="tab-item" href="#publications" data-section="publications">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    Papers
+  </a>
+  <a class="tab-item" href="#career" data-section="career">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+    Career
+  </a>
+  <a class="tab-item" href="#activities" data-section="activities">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+    Service
+  </a>
+</nav>
 
 <!-- ── SIDEBAR NAV ─────────────────────────────── -->
 <nav class="site-nav" id="sidebar">
@@ -1323,22 +1514,24 @@
   function setActive(el) {
     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
     el.classList.add('active');
-    // Close mobile nav
-    document.getElementById('sidebar').classList.remove('open');
   }
 
-  // Scroll-spy
+  // Unified scroll-spy for sidebar + mobile tab bar
   const sections = document.querySelectorAll('section[id], .section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
+  const tabItems = document.querySelectorAll('.tab-item');
+
+  function syncNav(id) {
+    const href = '#' + id;
+    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === href));
+    tabItems.forEach(t => t.classList.toggle('active', t.getAttribute('href') === href));
+  }
+
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(l => {
-          l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id);
-        });
-      }
+      if (entry.isIntersecting) syncNav(entry.target.id);
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.25, rootMargin: '0px 0px -30% 0px' });
   sections.forEach(s => observer.observe(s));
 
   /* ── SCROLL REVEAL ───────────────────────────── */
